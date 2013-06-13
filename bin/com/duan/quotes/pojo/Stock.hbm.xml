@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding='GBK'?>  
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.duan.quotes.pojo">
+	<class name="Stock" table="stock">
+		<meta attribute="sync-DAO">false</meta>
+		<id name="symbol" type="string" column="symbol" length="20">
+			<generator class="assigned" />
+		</id>
+		<property name="exchange" column="exchange" type="string"
+			not-null="true" />
+	</class>
+</hibernate-mapping>  

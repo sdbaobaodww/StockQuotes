@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="GBK"?>  
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.duan.quotes.pojo">
+	<class name="ONell" table="indices_onell">
+		<meta attribute="sync-DAO">false</meta>
+		<composite-id name="id" class="QutoesPrimaryKey">
+			<key-property name="symbol" column="symbol" type="string" />
+			<key-property name="lastTradeDate" column="lastTradeDate"
+				type="date" />
+			<key-property name="lastTradeTime" column="lastTradeTime"
+				type="time" />
+		</composite-id>
+		<property name="indices" column="indices" type="int" />
+	</class>
+</hibernate-mapping> 

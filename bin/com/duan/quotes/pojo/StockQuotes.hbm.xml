@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="GBK"?>  
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.duan.quotes.pojo">
+	<class name="StockQuotes" table="quotes">
+		<meta attribute="sync-DAO">false</meta>
+		<composite-id name="id" class="QutoesPrimaryKey">
+			<key-property name="symbol" column="symbol" type="string" />
+			<key-property name="lastTradeDate" column="lastTradeDate"
+				type="date" />
+			<key-property name="lastTradeTime" column="lastTradeTime"
+				type="time" />
+		</composite-id>
+		<property name="name" column="name" type="string" />
+		<property name="open" column="open" type="java.math.BigDecimal" />
+		<property name="previousClose" column="previousClose" type="java.math.BigDecimal" />
+		<property name="lastTrade" column="lastTrade" type="java.math.BigDecimal" />
+		<property name="priceChange" column="priceChange" type="java.math.BigDecimal" />
+		<property name="percentChange" column="percentChange" type="java.math.BigDecimal" />
+		<property name="high" column="high" type="java.math.BigDecimal" />
+		<property name="low" column="low" type="java.math.BigDecimal" />
+		<property name="amplitude" column="amplitude" type="java.math.BigDecimal" />
+		<property name="bid" column="bid" type="java.math.BigDecimal" />
+		<property name="ask" column="ask" type="java.math.BigDecimal" />
+		<property name="volume" column="volume" type="int" />
+		<property name="turnover" column="turnover" type="java.math.BigDecimal" />
+
+		<property name="bid1Size" column="bid1Size" type="int" />
+		<property name="bid1" column="bid1" type="java.math.BigDecimal" />
+		<property name="bid2Size" column="bid2Size" type="int" />
+		<property name="bid2" column="bid2" type="java.math.BigDecimal" />
+		<property name="bid3Size" column="bid3Size" type="int" />
+		<property name="bid3" column="bid3" type="java.math.BigDecimal" />
+		<property name="bid4Size" column="bid4Size" type="int" />
+		<property name="bid4" column="bid4" type="java.math.BigDecimal" />
+		<property name="bid5Size" column="bid5Size" type="int" />
+		<property name="bid5" column="bid5" type="java.math.BigDecimal" />
+
+		<property name="ask1Size" column="ask1Size" type="int" />
+		<property name="ask1" column="ask1" type="java.math.BigDecimal" />
+		<property name="ask2Size" column="ask2Size" type="int" />
+		<property name="ask2" column="ask2" type="java.math.BigDecimal" />
+		<property name="ask3Size" column="ask3Size" type="int" />
+		<property name="ask3" column="ask3" type="java.math.BigDecimal" />
+		<property name="ask4Size" column="ask4Size" type="int" />
+		<property name="ask4" column="ask4" type="java.math.BigDecimal" />
+		<property name="ask5Size" column="ask5Size" type="int" />
+		<property name="ask5" column="ask5" type="java.math.BigDecimal" />
+
+		<property name="commission" column="commission" type="int" />
+		<property name="cmmittee" column="cmmittee" type="java.math.BigDecimal" />
+	</class>
+    <sql-query callable="true" name="queryQuotesByDateRange"> 
+      <return alias="quotes" class="com.duan.quotes.pojo.StockQuotes"> 
+        <return-property name="id.symbol" column="symbol"/> 
+      	<return-property name="name" column="name"/> 
+        <return-property name="open" column="open"/> 
+        <return-property name="previousClose" column="previousClose"/> 
+        <return-property name="lastTrade" column="lastTrade"/>
+        <return-property name="high" column="high"/>
+        <return-property name="low" column="low"/>
+        <return-property name="volume" column="volume"/>
+        <return-property name="turnover" column="turnover"/>
+        <return-property name="amplitude" column="amplitude"/>
+        <return-property name="priceChange" column="priceChange"/>
+        <return-property name="percentChange" column="percentChange"/>
+      </return> 
+      {call queryQuotesByDateRange(?,?) } 
+    </sql-query> 
+     <sql-query callable="true" name="queryQuotesBySymbolAndDateRange"> 
+      <return alias="quotes" class="com.duan.quotes.pojo.StockQuotes"> 
+        <return-property name="id.symbol" column="symbol"/> 
+        <return-property name="name" column="name"/> 
+        <return-property name="open" column="open"/> 
+        <return-property name="previousClose" column="previousClose"/> 
+        <return-property name="lastTrade" column="lastTrade"/>
+        <return-property name="high" column="high"/>
+        <return-property name="low" column="low"/>
+        <return-property name="volume" column="volume"/>
+        <return-property name="turnover" column="turnover"/>
+        <return-property name="amplitude" column="amplitude"/>
+        <return-property name="priceChange" column="priceChange"/>
+        <return-property name="percentChange" column="percentChange"/>
+      </return> 
+      {call queryQuotesBySymbolAndDateRange(?,?,?) } 
+    </sql-query>
+</hibernate-mapping> 
